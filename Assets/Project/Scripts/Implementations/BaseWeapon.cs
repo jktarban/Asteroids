@@ -4,12 +4,14 @@ using UnityEngine;
 
 namespace Weapon {
     public abstract class BaseWeapon : IWeapon {
+        protected WeaponSO _weaponSO;
         protected Transform _weaponHead;
-        protected Action _onWeaponTimeOver;
+        private Action _onWeaponTimeOver;
         private Timer _weaponTimer;
 
-        public BaseWeapon(Transform fireHead, WeaponSO weaponSO, Action onWeaponTimeOver) {
-            _weaponHead = fireHead;
+        public BaseWeapon(Transform weaponHead, WeaponSO weaponSO, Action onWeaponTimeOver) {
+            _weaponSO = weaponSO;
+            _weaponHead = weaponHead;
             _onWeaponTimeOver = onWeaponTimeOver;
 
             if (weaponSO.Timer == -1) {

@@ -1,0 +1,26 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Pool {
+    public static class PoolManager {
+        private static List<GameObject> _poolObjects = new List<GameObject>();
+
+        public static void Recycle(GameObject gameObject) {
+            gameObject.SetActive(false);
+            _poolObjects.Add(gameObject);
+        }
+
+        public static GameObject GetFromPool(GameObject gameObject) {
+            foreach (var poolObject in _poolObjects) {
+                if (poolObject.name == gameObject.name) {
+                    if (!poolObject.activeInHierarchy) {
+                        poolObject.SetActive(true);
+                        return poolObject;
+                    }
+                }
+            }
+
+            return null;
+        }
+    }
+}

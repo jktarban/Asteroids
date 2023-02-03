@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Weapon {
     public class WeaponStart : BaseWeapon {
-        public WeaponStart(Transform fireHead, WeaponSO weaponSO, Action onWeaponTimeOver) : base(fireHead, weaponSO, onWeaponTimeOver) {
+        public WeaponStart(Transform weaponHead, WeaponSO weaponSO, Action onWeaponTimeOver) : base(weaponHead, weaponSO, onWeaponTimeOver) {
         }
 
         public override void Fire() {
-            Debug.Log("WEAPON START");
+            _weaponSO.CreateBullets(_weaponHead);
         }
     }
 }

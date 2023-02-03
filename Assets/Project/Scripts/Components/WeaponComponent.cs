@@ -16,7 +16,7 @@ namespace Weapon {
         }
 
         private void OnEnable() {
-            SetWeapon(typeof(WeaponBlaster));
+            SetWeapon(typeof(WeaponStart));
         }
 
         private void OnWeaponTimeOver() {

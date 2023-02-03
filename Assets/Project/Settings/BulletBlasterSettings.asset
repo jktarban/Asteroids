@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3ce366ed28f02e4791562a4bd7c6523, type: 3}
-  m_Name: WeaponBlasterSettings
+  m_Script: {fileID: 11500000, guid: 66e5f3fc71a269b4a9dae57210d16273, type: 3}
+  m_Name: BulletBlasterSettings
   m_EditorClassIdentifier: 
-  timer: 10
-  bulletAmount: 1
-  bulletObject: {fileID: 0}
+  speed: 20
+  desPawnTime: 1

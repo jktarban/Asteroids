@@ -326,13 +326,13 @@ MonoBehaviour:
   - weaponType:
       GuidAssignmentFailed: 0
       GUID: 89514a47723782b49be6d6427957b9c2
-      _typeNameAndAssembly: WeaponStart, Assembly-CSharp
+      _typeNameAndAssembly: Weapon.WeaponStart, Assembly-CSharp
       _suppressLogs: 0
     weaponSettings: {fileID: 11400000, guid: 9e5b5c200a0c30948a1283d14f6bf9cf, type: 2}
   - weaponType:
       GuidAssignmentFailed: 0
       GUID: 446d7aeb618dcac4eb5c3cef07bfec41
-      _typeNameAndAssembly: WeaponBlaster, Assembly-CSharp
+      _typeNameAndAssembly: Weapon.WeaponBlaster, Assembly-CSharp
       _suppressLogs: 0
     weaponSettings: {fileID: 11400000, guid: c8ec5c39b115849418a2eac4b74ae674, type: 2}
 --- !u!4 &1085357568
