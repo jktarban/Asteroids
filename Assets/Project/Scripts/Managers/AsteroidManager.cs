@@ -16,7 +16,7 @@ public class AsteroidManager : MonoSingleton<AsteroidManager> {
         destroySteps--;
 
         if(destroySteps == 0) {
-            //Add score here
+            ScoreManager.Instance.AddScore();
             return;
         }
 
