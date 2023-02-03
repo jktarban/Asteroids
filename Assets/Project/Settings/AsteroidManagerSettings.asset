@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3ce366ed28f02e4791562a4bd7c6523, type: 3}
-  m_Name: WeaponStartSettings
+  m_Script: {fileID: 11500000, guid: 1f6e2455355392e43badf60c6b9990ca, type: 3}
+  m_Name: AsteroidManagerSettings
   m_EditorClassIdentifier: 
-  timer: -1
-  fireInterval: 0.5
-  bulletAmount: 1
-  bulletDistance: 0.03
-  bulletPrefab: {fileID: 5309775490459105984, guid: 7481b1dd15f034942a639668bb3ccfda, type: 3}
+  asteroidPrefab: {fileID: 6095708589526236635, guid: 3eabb07ff640a344ca84be5c79129d9f, type: 3}
+  spawnInterval: 10
+  destroySteps: 5
+  speed: 3

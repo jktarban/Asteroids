@@ -28,7 +28,7 @@ public class WeaponSO : ScriptableObject {
 
     private IEnumerator CreateBulletsRoutine(Transform direction) {
         for (int i = 0; i < bulletAmount; i++) {
-            var bullet = PoolManager.GetFromPool(bulletPrefab.gameObject);
+            var bullet = PoolManager.GetFromPool(bulletPrefab.name);
 
             if (bullet == null) {
                 bullet = Instantiate(bulletPrefab).gameObject;

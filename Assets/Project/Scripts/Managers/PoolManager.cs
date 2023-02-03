@@ -10,9 +10,9 @@ namespace Pool {
             _poolObjects.Add(gameObject);
         }
 
-        public static GameObject GetFromPool(GameObject gameObject) {
+        public static GameObject GetFromPool(string name) {
             foreach (var poolObject in _poolObjects) {
-                if (poolObject.name == gameObject.name) {
+                if (poolObject.name == name) {
                     if (!poolObject.activeInHierarchy) {
                         poolObject.SetActive(true);
                         return poolObject;
