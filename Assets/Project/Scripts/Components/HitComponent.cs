@@ -21,6 +21,10 @@ public class HitComponent : MonoBehaviour
     }
 
     private IEnumerator HitRoutine() {
+        if (GameManager.Instance.IsGameOver) {
+            yield break;
+        }
+
         _isRecovering = true;
         HealthManager.Instance.DeductHealth();
         yield return new WaitForSeconds(_playerSettings.HitRecoveryTime);

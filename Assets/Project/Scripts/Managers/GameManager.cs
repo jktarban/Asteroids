@@ -20,7 +20,7 @@ public class GameManager : MonoSingleton<GameManager> {
         _isGameOver = true;
     }
 
-    private void Awake() {
+    private void Start() {
         restartButton.onClick.AddListener(OnClickRestartButton);
     }
 

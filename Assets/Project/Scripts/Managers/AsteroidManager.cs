@@ -35,6 +35,10 @@ public class AsteroidManager : MonoSingleton<AsteroidManager> {
     }
 
     private IEnumerator SpawnNewAsteroid() {
+        if (GameManager.Instance.IsGameOver) {
+            yield break;
+        }
+
         var asteroidDirection = GetRandomAsteroidDirection();
         //spawn outside player area
         var playerPosition = FindObjectOfType<PlayerController>().transform.position;
