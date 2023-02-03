@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 1085357568}
   - component: {fileID: 1085357572}
   - component: {fileID: 1085357570}
+  - component: {fileID: 1085357567}
   - component: {fileID: 1085357569}
   - component: {fileID: 1085357571}
   m_Layer: 0
@@ -308,6 +309,32 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1085357567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085357566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627d5e0a3931f4945aeb1bdfd78caac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponHead: {fileID: 1764387045}
+  weaponSOItems:
+  - weaponType:
+      GuidAssignmentFailed: 0
+      GUID: 89514a47723782b49be6d6427957b9c2
+      _typeNameAndAssembly: WeaponStart, Assembly-CSharp
+      _suppressLogs: 0
+    weaponSettings: {fileID: 11400000, guid: 9e5b5c200a0c30948a1283d14f6bf9cf, type: 2}
+  - weaponType:
+      GuidAssignmentFailed: 0
+      GUID: 446d7aeb618dcac4eb5c3cef07bfec41
+      _typeNameAndAssembly: WeaponBlaster, Assembly-CSharp
+      _suppressLogs: 0
+    weaponSettings: {fileID: 11400000, guid: c8ec5c39b115849418a2eac4b74ae674, type: 2}
 --- !u!4 &1085357568
 Transform:
   m_ObjectHideFlags: 0
@@ -321,6 +348,7 @@ Transform:
   m_Children:
   - {fileID: 948020840}
   - {fileID: 1927066165}
+  - {fileID: 1764387045}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -362,8 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd1bbda36d9c5f46b243db003fc2781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovementSpeedSettings: {fileID: 11400000, guid: 77795f4cfcfb7b649bb151c70558647a, type: 2}
-  playerRotationSpeedSettings: {fileID: 11400000, guid: baf4dc855d578fd408ea05987caae22e, type: 2}
+  playerSettings: {fileID: 11400000, guid: baf4dc855d578fd408ea05987caae22e, type: 2}
 --- !u!50 &1085357571
 Rigidbody2D:
   serializedVersion: 4
@@ -468,6 +495,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1764387044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1764387045}
+  m_Layer: 0
+  m_Name: WeaponHead
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1764387045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764387044}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.601, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1085357568}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1927066164
 GameObject:
