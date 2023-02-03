@@ -1,5 +1,6 @@
 using Movement;
 using UnityEngine;
+using Weapon;
 
 namespace Player {
     [RequireComponent(typeof(MovementComponent))]
