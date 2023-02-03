@@ -12,6 +12,10 @@ public class HealthManager : MonoSingleton<HealthManager> {
     public void DeductHealth() {
         _healthValue--;
         healthFillImage.fillAmount = (float)_healthValue / (float)playerSettings.Health;
+
+        if(_healthValue == 0) {
+            GameManager.Instance.GameOver();
+        }
     }
 
     private void Start() {
