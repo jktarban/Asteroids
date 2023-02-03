@@ -5,6 +5,10 @@ namespace Pool {
     public static class PoolManager {
         private static List<GameObject> _poolObjects = new List<GameObject>();
 
+        public static void Clear() {
+            _poolObjects.Clear();
+        }
+
         public static void Recycle(GameObject gameObject) {
             gameObject.SetActive(false);
             _poolObjects.Add(gameObject);

@@ -1,3 +1,4 @@
+using Pool;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,7 @@ public class GameManager : MonoSingleton<GameManager> {
     public void GameOver() {
         gameOverContainer.SetActive(true);
         _isGameOver = true;
+        scoreText.text = ScoreManager.Instance.ScoreValue.ToString();
     }
 
     private void Start() {
@@ -25,6 +27,7 @@ public class GameManager : MonoSingleton<GameManager> {
     }
 
     private void OnClickRestartButton() {
+        PoolManager.Clear();
         SceneManager.LoadScene("MainScene");
     }
 }
