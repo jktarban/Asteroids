@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace Player {
     [RequireComponent(typeof(MovementComponent))]
-    public class PlayerController : MonoBehaviour {
+    public class PlayerController : MonoBehaviour, IScreenBounds {
+  
         private MovementComponent _movementComponent;
 
         private void Awake() {
