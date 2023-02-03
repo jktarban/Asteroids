@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BulletStartSettings
   m_EditorClassIdentifier: 
   speed: 20
-  desPawnTime: 1
+  despawnTime: 1

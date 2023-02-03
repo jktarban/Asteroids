@@ -20,7 +20,7 @@ namespace Bullet {
         }
 
         private IEnumerator DespawnRoutine() {
-            yield return new WaitForSeconds(bulletSettings.DesPawnTime);
+            yield return new WaitForSeconds(bulletSettings.DespawnTime);
             PoolManager.Recycle(gameObject);
         }
     }

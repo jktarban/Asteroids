@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BulletBlasterSettings
   m_EditorClassIdentifier: 
   speed: 20
-  desPawnTime: 1
+  despawnTime: 1

@@ -6,8 +6,8 @@ public class BulletSO : ScriptableObject
     [SerializeField]
     private float speed;
     [SerializeField]
-    private float desPawnTime;
+    private float despawnTime;
 
     public float Speed => speed;
-    public float DesPawnTime => desPawnTime;
+    public float DespawnTime => despawnTime;
 }

@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: -1
   bulletAmount: 3
+  bulletDistance: 0.03
   bulletPrefab: {fileID: 5309775490459105984, guid: 7481b1dd15f034942a639668bb3ccfda, type: 3}
