@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AsteroidManager : MonoSingleton<AsteroidManager> {
     [SerializeField]
-    private AsteroidManagerSO asteroidManagerSettings;
+    private AsteroidSO asteroidManagerSettings;
     private const float ASTEROID_DIRECTION = 1f;
     private const float PLAYER_POSITIOM_OFFSET = 10f;
 

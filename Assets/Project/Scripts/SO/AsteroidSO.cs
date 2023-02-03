@@ -2,7 +2,7 @@ using Pool;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AsteroidManagerSettings", menuName = "GameSettings/AsteroidManagerSettings")]
-public class AsteroidManagerSO : ScriptableObject {
+public class AsteroidSO : ScriptableObject {
     [SerializeField]
     private GameObject asteroidPrefab;
     [SerializeField]

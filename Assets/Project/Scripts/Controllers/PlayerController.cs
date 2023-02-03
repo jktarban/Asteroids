@@ -23,5 +23,11 @@ namespace Player {
             playerInputAction.Player.Rotation.performed += _movementComponent.OnRotation;
             playerInputAction.Player.Fire.performed += _weaponComponent.OnFire;
         }
+
+        private void OnCollisionEnter2D(Collision2D collision) {
+            if (collision.gameObject.CompareTag("Asteroid")) {
+                HealthManager.Instance.DeductHealth();
+            }
+        }
     }
 }
