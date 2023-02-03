@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WeaponBlasterSettings
   m_EditorClassIdentifier: 
   timer: 10
+  fireInterval: 0.5
   bulletAmount: 1
   bulletDistance: 0.03
   bulletPrefab: {fileID: 0}
