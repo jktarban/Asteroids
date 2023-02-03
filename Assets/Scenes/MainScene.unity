@@ -427,7 +427,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -600,6 +600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1085357568}
   - component: {fileID: 1085357572}
+  - component: {fileID: 1085357573}
   - component: {fileID: 1085357570}
   - component: {fileID: 1085357567}
   - component: {fileID: 1085357569}
@@ -692,7 +693,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd1bbda36d9c5f46b243db003fc2781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSettings: {fileID: 11400000, guid: baf4dc855d578fd408ea05987caae22e, type: 2}
 --- !u!50 &1085357571
 Rigidbody2D:
   serializedVersion: 4
@@ -710,9 +710,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_Interpolate: 1
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1085357572
 MonoBehaviour:
@@ -724,6 +724,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af6e6468e1be0df41b121da94e09379c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSettings: {fileID: 11400000, guid: baf4dc855d578fd408ea05987caae22e, type: 2}
+--- !u!114 &1085357573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085357566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7c6a2e9640e7346868faf414a8a60f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1388333153

@@ -4,31 +4,32 @@ using UnityEngine.InputSystem;
 namespace Movement {
     [RequireComponent(typeof(Rigidbody2D))]
     public class MovementComponent : MonoBehaviour {
-        [SerializeField]
-        private PlayerSO playerSettings;
-
         private Rigidbody2D _rigidbody2D;
-        private bool _isAccelerating;
         private float _moveSpeed;
         private float _rotationSpeed;
+        private PlayerSO _playerSettings;
+
+        internal void SetPlayerSettings(PlayerSO playerSettings) {
+            _playerSettings = playerSettings;
+        }
 
         internal void OnAccelerate(InputAction.CallbackContext context) {
-            _moveSpeed = context.ReadValue<float>() * playerSettings.AccelerationSpeed;
+            _moveSpeed = context.ReadValue<float>();
         }
 
         internal void OnRotation(InputAction.CallbackContext context) {
-            _rotationSpeed = context.ReadValue<float>() * playerSettings.RotationSpeed;
-        }
-
-        internal void Fire(InputAction.CallbackContext context) {
-
+            _rotationSpeed = context.ReadValue<float>();
         }
 
         private void FixedUpdate() {
+            if (_playerSettings == null) {
+                return;
+            }
+
             var direction = (Vector2)transform.up;
-            _rigidbody2D.AddForce(_moveSpeed * Time.fixedDeltaTime * direction, ForceMode2D.Impulse);
-            _rigidbody2D.velocity = Vector3.ClampMagnitude(_rigidbody2D.velocity, playerSettings.AccelerationSpeed);
-            _rigidbody2D.rotation -= _rotationSpeed;
+            _rigidbody2D.AddForce(_moveSpeed * _playerSettings.AccelerationSpeed * Time.fixedDeltaTime * direction, ForceMode2D.Impulse);
+            _rigidbody2D.velocity = Vector3.ClampMagnitude(_rigidbody2D.velocity, _playerSettings.AccelerationSpeed);
+            _rigidbody2D.rotation -= _rotationSpeed * _playerSettings.RotationSpeed;
         }
 
         private void Awake() {

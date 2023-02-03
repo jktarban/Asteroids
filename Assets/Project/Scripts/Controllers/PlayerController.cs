@@ -5,14 +5,16 @@ using Weapon;
 namespace Player {
     [RequireComponent(typeof(MovementComponent))]
     [RequireComponent(typeof(WeaponComponent))]
+    [RequireComponent(typeof(HitComponent))]
     public class PlayerController : MonoBehaviour, IScreenBounds {
-
+        [SerializeField]
+        private PlayerSO playerSettings;
         private MovementComponent _movementComponent;
         private WeaponComponent _weaponComponent;
+        private HitComponent _hitComponent;
 
         private void Awake() {
-            _movementComponent = GetComponent<MovementComponent>();
-            _weaponComponent = GetComponent<WeaponComponent>();
+            SetComponents();
             SetInput();
         }
 
@@ -24,10 +26,13 @@ namespace Player {
             playerInputAction.Player.Fire.performed += _weaponComponent.OnFire;
         }
 
-        private void OnCollisionEnter2D(Collision2D collision) {
-            if (collision.gameObject.CompareTag("Asteroid")) {
-                HealthManager.Instance.DeductHealth();
-            }
+        private void SetComponents() {
+            _movementComponent = GetComponent<MovementComponent>();
+            _weaponComponent = GetComponent<WeaponComponent>();
+            _hitComponent = GetComponent<HitComponent>();
+
+            _movementComponent.SetPlayerSettings(playerSettings);
+            _hitComponent.SetPlayerSettings(playerSettings);
         }
     }
 }
