@@ -15,6 +15,7 @@ namespace Asteroid {
         private const float ASTEROID_DIRECTION = 1f;
         private const float PLAYER_POSITIOM_OFFSET = 10f;
         private bool _isFirstAsteroid = true;
+        private PlayerController _player;
 
         public void DestroyAsteroid(AsteroidController asteroidController) {
             var destroySteps = asteroidController.DestroySteps;
@@ -38,27 +39,38 @@ namespace Asteroid {
         }
 
         public IEnumerator SpawnNewAsteroidRoutine() {
-            Vector2 position;
+            if (_player == null) {
+                yield break;
+            }
+
+            Vector2 position; ;
             var asteroidDirection = Vector2.zero;
-            var playerPosition = FindObjectOfType<PlayerController>().transform.position;
+            var playerPosition = _player.transform.position;
             
             if (_isFirstAsteroid) {
                 //spawn right of player
                 position = new Vector2(playerPosition.x + PLAYER_POSITIOM_OFFSET, playerPosition.x);
                 asteroidDirection = ((Vector2)firstAsteroidDirection.position - asteroidDirection).normalized;
                 _isFirstAsteroid = false;
+                asteroidManagerSettings.CreateAsteroids(asteroidManagerSettings.DestroySteps, position, asteroidDirection);
             }
             else {
-                //spawn outside player area
-                var randomX = Random.Range(-PLAYER_POSITIOM_OFFSET, PLAYER_POSITIOM_OFFSET);
-                var randomY = Random.Range(-PLAYER_POSITIOM_OFFSET, PLAYER_POSITIOM_OFFSET);
-                position = new Vector2(playerPosition.x + randomX, playerPosition.x + randomY);
-                asteroidDirection = GetRandomAsteroidDirection();
+                if(GameManager.Instance.State == GameState.Start) {
+                    //spawn outside player area
+                    var randomX = Random.Range(-PLAYER_POSITIOM_OFFSET, PLAYER_POSITIOM_OFFSET);
+                    var randomY = Random.Range(-PLAYER_POSITIOM_OFFSET, PLAYER_POSITIOM_OFFSET);
+                    position = new Vector2(playerPosition.x + randomX, playerPosition.x + randomY);
+                    asteroidDirection = GetRandomAsteroidDirection();
+                    asteroidManagerSettings.CreateAsteroids(asteroidManagerSettings.DestroySteps, position, asteroidDirection);
+                }
             }
-         
-            asteroidManagerSettings.CreateAsteroids(asteroidManagerSettings.DestroySteps, position, asteroidDirection);
+          
             yield return new WaitForSeconds(asteroidManagerSettings.SpawnInterval);
             yield return SpawnNewAsteroidRoutine();
+        }
+
+        private void Start() {
+            _player = FindObjectOfType<PlayerController>();
         }
     }
 }
