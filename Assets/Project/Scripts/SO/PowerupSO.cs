@@ -6,9 +6,10 @@ public class PowerUpSO : ScriptableObject {
     [SerializeField]
     private float spawnInterval;
     [SerializeField]
-    private GameObject[] powerupPrefabs;
+    private float movementSpeed;
     [SerializeField]
-    private float speed;
+    private GameObject[] powerupPrefabs;
+ 
 
     public float SpawnInterval => spawnInterval;
 
@@ -23,7 +24,7 @@ public class PowerUpSO : ScriptableObject {
 
         var powerup = powerupObject.GetComponent<PowerupController>();
         powerup.name = powerup.name;
-        powerup.SetSpeed(speed, direction);
+        powerup.SetSpeed(movementSpeed, direction);
         powerup.transform.position = position;
     }
 }

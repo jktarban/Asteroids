@@ -24,7 +24,7 @@ namespace Weapon {
                 weapon.EndTimer();
             }
 
-            var weaponSettings = weaponSOItems.First(x => x.WeaponType.Type == type).WeaponSettings;
+            var weaponSettings = weaponSOItems.First((WeaponSOItem x) => x.WeaponType.Type == type).WeaponSettings;
 
             if (type == typeof(WeaponDefault)) {
                 weapon = new WeaponDefault(weaponHead, weaponSettings, OnWeaponTimeOver);

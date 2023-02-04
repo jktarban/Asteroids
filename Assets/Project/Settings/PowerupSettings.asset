@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PowerupSettings
   m_EditorClassIdentifier: 
   spawnInterval: 10
+  movementSpeed: 3
   powerupPrefabs:
   - {fileID: 5827287774943976616, guid: 6d94f63ed80010d408716cf14a7a6280, type: 3}
   - {fileID: 5827287774943976616, guid: e5769c063610d824f8f03ac14d92268a, type: 3}
-  speed: 3

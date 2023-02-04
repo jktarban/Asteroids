@@ -1231,6 +1231,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {fileID: 1085357568}
+  barrierSOItems:
+  - barrierType:
+      GuidAssignmentFailed: 0
+      GUID: 7755e79730a160f468eb73de55349e22
+      _typeNameAndAssembly: Barrier.BarrierBasic, Assembly-CSharp
+      _suppressLogs: 0
+    barrierSettings: {fileID: 11400000, guid: 2b814675f08c6224797f83505dd0e75b, type: 2}
 --- !u!1 &1339573496
 GameObject:
   m_ObjectHideFlags: 0
