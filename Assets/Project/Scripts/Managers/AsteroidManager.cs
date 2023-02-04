@@ -9,8 +9,12 @@ namespace Asteroid {
     public class AsteroidManager : MonoSingleton<AsteroidManager> {
         [SerializeField]
         private AsteroidSO asteroidManagerSettings;
+        [SerializeField]
+        private Transform firstAsteroidDirection;
+
         private const float ASTEROID_DIRECTION = 1f;
         private const float PLAYER_POSITIOM_OFFSET = 10f;
+        private bool _isFirstAsteroid = true;
 
         public void DestroyAsteroid(AsteroidController asteroidController) {
             var destroySteps = asteroidController.DestroySteps;
@@ -34,16 +38,24 @@ namespace Asteroid {
         }
 
         public IEnumerator SpawnNewAsteroidRoutine() {
-            if (GameManager.Instance.State != GameState.Start) {
-                yield break;
-            }
-
-            var asteroidDirection = GetRandomAsteroidDirection();
-            //spawn outside player area
+            Vector2 position;
+            var asteroidDirection = Vector2.zero;
             var playerPosition = FindObjectOfType<PlayerController>().transform.position;
-            var randomX = Random.Range(-PLAYER_POSITIOM_OFFSET, PLAYER_POSITIOM_OFFSET);
-            var randomY = Random.Range(-PLAYER_POSITIOM_OFFSET, PLAYER_POSITIOM_OFFSET);
-            var position = new Vector2(playerPosition.x + randomX, playerPosition.x + randomY);
+            
+            if (_isFirstAsteroid) {
+                //spawn right of player
+                position = new Vector2(playerPosition.x + PLAYER_POSITIOM_OFFSET, playerPosition.x);
+                asteroidDirection = ((Vector2)firstAsteroidDirection.position - asteroidDirection).normalized;
+                _isFirstAsteroid = false;
+            }
+            else {
+                //spawn outside player area
+                var randomX = Random.Range(-PLAYER_POSITIOM_OFFSET, PLAYER_POSITIOM_OFFSET);
+                var randomY = Random.Range(-PLAYER_POSITIOM_OFFSET, PLAYER_POSITIOM_OFFSET);
+                position = new Vector2(playerPosition.x + randomX, playerPosition.x + randomY);
+                asteroidDirection = GetRandomAsteroidDirection();
+            }
+         
             asteroidManagerSettings.CreateAsteroids(asteroidManagerSettings.DestroySteps, position, asteroidDirection);
             yield return new WaitForSeconds(asteroidManagerSettings.SpawnInterval);
             yield return SpawnNewAsteroidRoutine();

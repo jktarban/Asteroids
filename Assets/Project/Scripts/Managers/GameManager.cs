@@ -30,7 +30,6 @@ public class GameManager : MonoSingleton<GameManager> {
             _state = value;
 
             if (_state == GameState.Start) {
-                StartCoroutine(AsteroidManager.Instance.SpawnNewAsteroidRoutine());
                 StartCoroutine(PowerupManager.Instance.SpawnPowerUpRoutine());
             }
         }
@@ -46,6 +45,7 @@ public class GameManager : MonoSingleton<GameManager> {
         restartButton.onClick.AddListener(OnClickRestartButton);
         yield return new WaitForSeconds((float)introTimeline.duration);
         _state = GameState.WaitForInput;
+        StartCoroutine(AsteroidManager.Instance.SpawnNewAsteroidRoutine());
     }
 
     private void OnClickRestartButton() {
