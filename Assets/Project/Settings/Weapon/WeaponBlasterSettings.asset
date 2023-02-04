@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ce366ed28f02e4791562a4bd7c6523, type: 3}
   m_Name: WeaponBlasterSettings
   m_EditorClassIdentifier: 
-  timer: 1
+  timer: 10
   fireInterval: 0.5
   bulletAmount: 1
   bulletDistance: 0.03
