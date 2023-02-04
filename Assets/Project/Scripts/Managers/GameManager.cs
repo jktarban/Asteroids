@@ -1,6 +1,8 @@
 using Pool;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -11,6 +13,8 @@ public class GameManager : MonoSingleton<GameManager> {
     private TMP_Text scoreText;
     [SerializeField]
     private Button restartButton;
+    [SerializeField]
+    private PlayableDirector introTimeline;
 
     private GameState _state;
 
@@ -22,8 +26,11 @@ public class GameManager : MonoSingleton<GameManager> {
         scoreText.text = ScoreManager.Instance.ScoreValue.ToString();
     }
 
-    private void Start() {
+    private IEnumerator Start() {
         restartButton.onClick.AddListener(OnClickRestartButton);
+        yield return new WaitForSeconds((float)introTimeline.duration);
+        _state = GameState.Start;
+        yield return AsteroidManager.Instance.SpawnNewAsteroidRoutine();
     }
 
     private void OnClickRestartButton() {

@@ -26,15 +26,11 @@ public class AsteroidManager : MonoSingleton<AsteroidManager> {
         asteroidManagerSettings.CreateAsteroids(destroySteps, position, -asteroidDirection);
     }
 
-    private IEnumerator Start() {
-        yield return SpawnNewAsteroid();
-    }
-
     private Vector2 GetRandomAsteroidDirection() {
         return new Vector2(Random.Range(-ASTEROID_DIRECTION, ASTEROID_DIRECTION), Random.Range(-ASTEROID_DIRECTION, ASTEROID_DIRECTION));
     }
 
-    private IEnumerator SpawnNewAsteroid() {
+    public IEnumerator SpawnNewAsteroidRoutine() {
         if (GameManager.Instance.State != GameState.Start) {
             yield break;
         }
@@ -47,6 +43,6 @@ public class AsteroidManager : MonoSingleton<AsteroidManager> {
         var position = new Vector2(playerPosition.x + randomX, playerPosition.x + randomY);
         asteroidManagerSettings.CreateAsteroids(asteroidManagerSettings.DestroySteps, position, asteroidDirection);
         yield return new WaitForSeconds(asteroidManagerSettings.SpawnInterval);
-        yield return SpawnNewAsteroid();
+        yield return SpawnNewAsteroidRoutine();
     }
 }
