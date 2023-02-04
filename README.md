@@ -2,12 +2,8 @@
 
 This is for an exam given to me
 
+To create a powerup, go to GameObject, create powerup.
+and from there we need to edit the prefabs and scriptableobjects created.
 
-I have ran out of time to implement editor script that automatically creates scripts, scriptable objects and prefabs when creating a new powerup. Also ran out of time to improve Asset Sprites
-
-Configurations are located at Assets>Project>Settings>
-
-Creating a new weapon needs to create a new bullet prefab, a weapon script, and a weapon scriptable object and add to the weapon manager settings. 
-Same for Barrier and Powerups (but without bullet prefab)
-
-Base prefabs are also there to create variants and configure
+(RAN OUT OF TIME)
+Scripts are not included so we should create a WeaponScript that inherits BaseWeapon and BarrierScript that inherits BaseBarrier. see examples (barrierbasic and weaponblaster)
