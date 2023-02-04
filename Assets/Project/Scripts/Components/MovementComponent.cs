@@ -16,14 +16,22 @@ namespace Movement {
 
         internal void OnAccelerate(InputAction.CallbackContext context) {
             _moveSpeed = context.ReadValue<float>();
+            CheckState();
         }
 
         internal void OnRotation(InputAction.CallbackContext context) {
             _rotationSpeed = context.ReadValue<float>();
+            CheckState();
+        }
+
+        private void CheckState() {
+            if (GameManager.Instance.State == GameState.WaitForInput) {
+                GameManager.Instance.State = GameState.Start;
+            }
         }
 
         private void FixedUpdate() {
-            if (GameManager.Instance.State != GameState.Start) {
+            if (GameManager.Instance.State == GameState.Intro) {
                 return;
             }
 

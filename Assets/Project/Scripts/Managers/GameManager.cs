@@ -22,7 +22,19 @@ public class GameManager : MonoSingleton<GameManager> {
 
     private GameState _state;
 
-    public GameState State => _state;
+    public GameState State {
+        get {
+            return _state;
+        }
+        set {
+            _state = value;
+
+            if (_state == GameState.Start) {
+                StartCoroutine(AsteroidManager.Instance.SpawnNewAsteroidRoutine());
+                StartCoroutine(PowerupManager.Instance.SpawnPowerUpRoutine());
+            }
+        }
+    }
 
     public void GameOver() {
         gameOverContainer.SetActive(true);
@@ -33,9 +45,7 @@ public class GameManager : MonoSingleton<GameManager> {
     private IEnumerator Start() {
         restartButton.onClick.AddListener(OnClickRestartButton);
         yield return new WaitForSeconds((float)introTimeline.duration);
-        _state = GameState.Start;
-        StartCoroutine(AsteroidManager.Instance.SpawnNewAsteroidRoutine());
-        StartCoroutine(PowerupManager.Instance.SpawnPowerUpRoutine());
+        _state = GameState.WaitForInput;
     }
 
     private void OnClickRestartButton() {
@@ -46,6 +56,7 @@ public class GameManager : MonoSingleton<GameManager> {
 
 public enum GameState {
     Intro,
+    WaitForInput,
     Start,
     GameOver
 }
