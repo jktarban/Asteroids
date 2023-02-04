@@ -1,11 +1,21 @@
 using TypeReferences;
 using UnityEngine;
 
-public class PowerupController : MonoBehaviour
-{
+[RequireComponent(typeof(Rigidbody2D))]
+public class PowerupController : MonoBehaviour {
     [SerializeField]
     [Inherits(typeof(IPowerup))]
     private TypeReference powerupType;
 
-    public string PowerupName => powerupType.Type.Name;
+    private Rigidbody2D _rigidbody2D;
+
+    internal string PowerupName => powerupType.Type.Name;
+
+    public void SetSpeed(float speed, Vector2 direction) {
+        _rigidbody2D.velocity = new Vector2(direction.x, direction.y) * speed;
+    }
+
+    private void Awake() {
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+    }
 }

@@ -30,7 +30,8 @@ public class GameManager : MonoSingleton<GameManager> {
         restartButton.onClick.AddListener(OnClickRestartButton);
         yield return new WaitForSeconds((float)introTimeline.duration);
         _state = GameState.Start;
-        yield return AsteroidManager.Instance.SpawnNewAsteroidRoutine();
+        StartCoroutine(AsteroidManager.Instance.SpawnNewAsteroidRoutine());
+        StartCoroutine(PowerupManager.Instance.SpawnPowerUpRoutine());
     }
 
     private void OnClickRestartButton() {

@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class BarrierComponent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private Transform position;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void SetBarrier(Type type) {
+
     }
 }
