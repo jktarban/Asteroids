@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66e5f3fc71a269b4a9dae57210d16273, type: 3}
-  m_Name: BulletStartSettings
+  m_Name: BulletDefaultSettings
   m_EditorClassIdentifier: 
   speed: 20
   despawnTime: 1

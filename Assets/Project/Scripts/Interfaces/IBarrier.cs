@@ -1,1 +1,2 @@
-public interface IBarrier : IPowerup {}
+public interface IBarrier {
+}

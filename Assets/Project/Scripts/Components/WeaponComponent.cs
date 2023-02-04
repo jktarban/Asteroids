@@ -12,32 +12,34 @@ namespace Weapon {
         private IWeapon weapon;
 
         internal void OnFire(InputAction.CallbackContext obj) {
-            if(weapon != null) {
-                weapon.Fire();
+            if(GameManager.Instance.State != GameState.Start) {
+                return;
             }
+
+            weapon.Fire();
         }
 
-        private void OnEnable() {
-            SetWeapon(typeof(WeaponBlaster));
-        }
-
-        private void OnWeaponTimeOver() {
-            SetWeapon(typeof(WeaponStart));
-        }
-
-        private void SetWeapon(Type type) {
+        public void SetWeapon(Type type) {
             if (weapon != null) {
                 weapon.EndTimer();
             }
 
             var weaponSettings = weaponSOItems.First(x => x.WeaponType.Type == type).WeaponSettings;
 
-            if (type == typeof(WeaponStart)) {
-                weapon = new WeaponStart(weaponHead, weaponSettings, OnWeaponTimeOver);
+            if (type == typeof(WeaponDefault)) {
+                weapon = new WeaponDefault(weaponHead, weaponSettings, OnWeaponTimeOver);
             }
             if (type == typeof(WeaponBlaster)) {
                 weapon = new WeaponBlaster(weaponHead, weaponSettings, OnWeaponTimeOver);
             }
+        }
+
+        private void OnEnable() {
+            SetWeapon(typeof(WeaponDefault));
+        }
+
+        private void OnWeaponTimeOver() {
+            SetWeapon(typeof(WeaponDefault));
         }
     }
 }

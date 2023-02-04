@@ -1,33 +1,15 @@
-using System.Collections;
 using UnityEngine;
 
-public class CollideComponent : MonoBehaviour
-{
-    private PlayerSO _playerSettings;
-    private bool _isRecovering;
-
-    internal void SetPlayerSettings(PlayerSO playerSettings) {
-        _playerSettings = playerSettings;
-    }
-
+public class CollideComponent : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Asteroid")) {
-            if (_isRecovering) {
-                return;
-            }
-
-            StartCoroutine(HitRoutine());
+            HealthManager.Instance.Hit();
         }
     }
 
-    private IEnumerator HitRoutine() {
-        if (GameManager.Instance.State != GameState.Start) {
-            yield break;
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.CompareTag("Powerup")) {
+            PowerupManager.Instance.CheckPowerup(collision.GetComponent<PowerupController>());
         }
-
-        _isRecovering = true;
-        HealthManager.Instance.DeductHealth();
-        yield return new WaitForSeconds(_playerSettings.HitRecoveryTime);
-        _isRecovering = false;
     }
 }

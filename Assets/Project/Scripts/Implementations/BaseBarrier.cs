@@ -1,3 +1,5 @@
-public class BarrierBasic : IBarrier {
-   
+namespace Barrier {
+    public class BaseBarrier : IBarrier {
+ 
+    }
 }

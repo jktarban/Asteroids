@@ -33,7 +33,6 @@ namespace Player {
             _hitComponent = GetComponent<CollideComponent>();
 
             _movementComponent.SetPlayerSettings(playerSettings);
-            _hitComponent.SetPlayerSettings(playerSettings);
         }
 
         private void OnDestroy() {

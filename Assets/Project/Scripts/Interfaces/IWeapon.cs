@@ -1,4 +1,4 @@
-public interface IWeapon : IPowerup {
+public interface IWeapon {
     void EndTimer();
     void Fire();
 }
