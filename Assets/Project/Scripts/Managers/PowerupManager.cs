@@ -2,6 +2,7 @@ using Barrier;
 using Player;
 using Pool;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using Weapon;
 
@@ -18,12 +19,11 @@ public class PowerupManager : MonoSingleton<PowerupManager> {
     public void CheckPowerup(PowerupController powerupController) {
         var powerupName = powerupController.PowerupName;
 
-        if (powerupName == typeof(WeaponBlaster).Name) {
-            weaponComponent.SetWeapon(typeof(WeaponBlaster));
+        if(powerupSettings.PowerupWeaponPrefabs.Any(x=> x.PowerupName.Contains(powerupName))){
+            weaponComponent.SetWeapon(powerupName);
         }
-
-        if (powerupName == typeof(BarrierBasic).Name) {
-            barrierComponent.SetBarrier(typeof(BarrierBasic));
+        else if (powerupSettings.PowerupBarrierPrefabs.Any(x => x.PowerupName.Contains(powerupName))){
+            barrierComponent.SetBarrier(powerupName);
         }
 
         PoolManager.Pool(powerupController.gameObject);

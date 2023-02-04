@@ -8,18 +8,18 @@ public class PowerUpSO : ScriptableObject {
     [SerializeField]
     private float movementSpeed;
     [SerializeField]
-    private GameObject[] powerupWeaponPrefabs;
+    private PowerupController[] powerupWeaponPrefabs;
     [SerializeField]
-    private GameObject[] powerupBarrierPrefabs;
+    private PowerupController[] powerupBarrierPrefabs;
 
-    public GameObject[] PowerupWeaponPrefabs => powerupWeaponPrefabs;
-    public GameObject[] PowerupBarrierPrefabs => powerupBarrierPrefabs;
+    public PowerupController[] PowerupWeaponPrefabs => powerupWeaponPrefabs;
+    public PowerupController[] PowerupBarrierPrefabs => powerupBarrierPrefabs;
 
     public float SpawnInterval => spawnInterval;
 
     public void CreatePowerup(Vector2 position, Vector2 direction) {
         var randomNumber = Random.Range(0, 2);
-        GameObject[] powerupPrefabs;
+        PowerupController[] powerupPrefabs;
 
         if (randomNumber == 0) {
             powerupPrefabs = powerupWeaponPrefabs;
@@ -32,7 +32,7 @@ public class PowerUpSO : ScriptableObject {
         var powerupObject = PoolManager.Recycle(powerupPrefab.name);
 
         if (powerupObject == null) {
-            powerupObject = Instantiate(powerupPrefab);
+            powerupObject = Instantiate(powerupPrefab.gameObject);
         }
 
         var powerup = powerupObject.GetComponent<PowerupController>();
