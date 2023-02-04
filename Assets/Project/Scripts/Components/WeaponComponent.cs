@@ -12,11 +12,13 @@ namespace Weapon {
         private IWeapon weapon;
 
         internal void OnFire(InputAction.CallbackContext obj) {
-            weapon.Fire();
+            if(weapon != null) {
+                weapon.Fire();
+            }
         }
 
         private void OnEnable() {
-            SetWeapon(typeof(WeaponStart));
+            SetWeapon(typeof(WeaponBlaster));
         }
 
         private void OnWeaponTimeOver() {

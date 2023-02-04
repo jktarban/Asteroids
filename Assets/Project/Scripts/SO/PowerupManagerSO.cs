@@ -5,5 +5,5 @@ public class PowerupManagerSO : ScriptableObject {
     [SerializeField]
     private float spawnInterval;
     [SerializeField]
-    private PowerupSO[] powerups;
+    private GameObject[] PowerupPrefabs;
 }

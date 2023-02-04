@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class HitComponent : MonoBehaviour
+public class CollideComponent : MonoBehaviour
 {
     private PlayerSO _playerSettings;
     private bool _isRecovering;

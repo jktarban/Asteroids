@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e539f85738748c47a85d7c4d557a9dd, type: 3}
-  m_Name: PowerupManagerSettings
+  m_Name: PowerupSettings
   m_EditorClassIdentifier: 
   spawnInterval: 5
-  powerups:
-  - {fileID: 11400000, guid: ea7bc8870ca349543b53e77fa6dcf436, type: 2}
+  PowerupPrefabs:
+  - {fileID: 5827287774943976616, guid: e5769c063610d824f8f03ac14d92268a, type: 3}
+  - {fileID: 5827287774943976616, guid: 6d94f63ed80010d408716cf14a7a6280, type: 3}

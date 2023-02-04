@@ -3,7 +3,7 @@ using System.Timers;
 using UnityEngine;
 
 namespace Weapon {
-    public abstract class BaseWeapon : IWeapon {
+    public class BaseWeapon : IWeapon {
         protected WeaponSO _weaponSO;
         protected Transform _weaponHead;
         private Action _onWeaponTimeOver;
@@ -30,7 +30,9 @@ namespace Weapon {
             }
         }
 
-        public abstract void Fire();
+        public void Fire() {
+            _weaponSO.CreateBullets(_weaponHead);
+        }
 
         private void OnWeaponTimeOver(object sender, ElapsedEventArgs e) {
             _onWeaponTimeOver?.Invoke();
