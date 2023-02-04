@@ -16,7 +16,7 @@ public class PowerUpSO : ScriptableObject {
     public void CreatePowerup(Vector2 position, Vector2 direction) {
         var powerupPrefab = powerupPrefabs[Random.Range(0, powerupPrefabs.Length)];
 
-        var powerupObject = PoolManager.GetFromPool(powerupPrefab.name);
+        var powerupObject = PoolManager.Recycle(powerupPrefab.name);
 
         if (powerupObject == null) {
             powerupObject = Instantiate(powerupPrefab);

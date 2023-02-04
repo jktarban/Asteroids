@@ -17,7 +17,7 @@ public class AsteroidSO : ScriptableObject {
     public float SpawnInterval => spawnInterval;
 
     public void CreateAsteroids(int destroyStep, Vector2 position, Vector2 direction) {
-        var asteroidObject = PoolManager.GetFromPool(asteroidPrefab.name + destroyStep);
+        var asteroidObject = PoolManager.Recycle(asteroidPrefab.name + destroyStep);
 
         if (asteroidObject == null) {
             asteroidObject = Instantiate(asteroidPrefab).gameObject;

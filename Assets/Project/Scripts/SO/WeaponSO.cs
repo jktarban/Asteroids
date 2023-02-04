@@ -5,6 +5,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "WeaponSettings", menuName = "GameSettings/WeaponSettings")]
 public class WeaponSO : ScriptableObject {
+    [Header("-1 if no timer")]
     [SerializeField]
     private int timer;
     [SerializeField]
@@ -28,7 +29,7 @@ public class WeaponSO : ScriptableObject {
 
     private IEnumerator CreateBulletsRoutine(Transform direction) {
         for (int i = 0; i < bulletAmount; i++) {
-            var bullet = PoolManager.GetFromPool(bulletPrefab.name);
+            var bullet = PoolManager.Recycle(bulletPrefab.name);
 
             if (bullet == null) {
                 bullet = Instantiate(bulletPrefab).gameObject;

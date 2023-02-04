@@ -845,7 +845,7 @@ GameObject:
   m_Component:
   - component: {fileID: 948020840}
   - component: {fileID: 948020841}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpriteBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1065,7 +1065,7 @@ GameObject:
   - component: {fileID: 1085357569}
   - component: {fileID: 1085357571}
   - component: {fileID: 1085357574}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1231,13 +1231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {fileID: 1085357568}
-  barrierSOItems:
-  - barrierType:
-      GuidAssignmentFailed: 0
-      GUID: 7755e79730a160f468eb73de55349e22
-      _typeNameAndAssembly: Barrier.BarrierBasic, Assembly-CSharp
-      _suppressLogs: 0
-    barrierSettings: {fileID: 11400000, guid: 2b814675f08c6224797f83505dd0e75b, type: 2}
+  barrierManagerSettings: {fileID: 11400000, guid: 16cd221d0c125cf468329a31ae0bf7e7, type: 2}
 --- !u!1 &1339573496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,7 +1602,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1764387045}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WeaponHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1818,7 +1812,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1927066165}
   - component: {fileID: 1927066166}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpriteHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}

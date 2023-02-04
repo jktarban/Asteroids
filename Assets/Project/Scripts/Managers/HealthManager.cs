@@ -10,6 +10,11 @@ public class HealthManager : MonoSingleton<HealthManager> {
 
     private int _healthValue;
     private bool _isRecovering;
+    private BarrierController _barrierController;
+
+    internal void SetBarrier(BarrierController barrierController) {
+        _barrierController = barrierController;
+    }
 
     internal void Hit() {
         if (_isRecovering) {
@@ -29,8 +34,18 @@ public class HealthManager : MonoSingleton<HealthManager> {
             yield break;
         }
 
+        if (_barrierController is object) {
+            if (_barrierController != null) {
+                if (_barrierController.AbsorbAmount != 0) {
+                    _barrierController.UseBarrier();
+                }
+            }
+        }
+        else {
+            DeductHealth();
+        }
+
         _isRecovering = true;
-        DeductHealth();
         yield return new WaitForSeconds(playerSettings.HitRecoveryTime);
         _isRecovering = false;
     }

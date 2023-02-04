@@ -9,12 +9,12 @@ namespace Pool {
             _poolObjects.Clear();
         }
 
-        public static void Recycle(GameObject gameObject) {
+        public static void Pool(GameObject gameObject) {
             gameObject.SetActive(false);
             _poolObjects.Add(gameObject);
         }
 
-        public static GameObject GetFromPool(string name) {
+        public static GameObject Recycle(string name) {
             foreach (var poolObject in _poolObjects) {
                 if (poolObject.name == name) {
                     if (!poolObject.activeInHierarchy) {

@@ -26,7 +26,7 @@ public class PowerupManager : MonoSingleton<PowerupManager> {
             barrierComponent.SetBarrier(typeof(BarrierBasic));
         }
 
-        PoolManager.Recycle(powerupController.gameObject);
+        PoolManager.Pool(powerupController.gameObject);
     }
 
     public IEnumerator SpawnPowerUpRoutine() {

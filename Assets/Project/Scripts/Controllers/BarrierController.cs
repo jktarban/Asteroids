@@ -7,6 +7,8 @@ public class BarrierController : MonoBehaviour
     private BarrierSO barrierSettings;
     private int _absorbAmount;
 
+    public int AbsorbAmount => _absorbAmount;
+
     private void OnEnable() {
         _absorbAmount = barrierSettings.AbsorbAmount;
     }
@@ -14,7 +16,7 @@ public class BarrierController : MonoBehaviour
     public void UseBarrier() {
         _absorbAmount--;
         if (_absorbAmount == 0) {
-            PoolManager.Recycle(gameObject);
+            PoolManager.Pool(gameObject);
         }
     }
 }

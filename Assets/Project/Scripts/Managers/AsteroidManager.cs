@@ -12,7 +12,7 @@ public class AsteroidManager : MonoSingleton<AsteroidManager> {
     public void DestroyAsteroid(AsteroidController asteroidController) {
         var destroySteps = asteroidController.DestroySteps;
         var position = asteroidController.transform.position;
-        PoolManager.Recycle(asteroidController.gameObject);
+        PoolManager.Pool(asteroidController.gameObject);
         destroySteps--;
 
         if(destroySteps == 0) {

@@ -17,7 +17,7 @@ public class AsteroidController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Bullet")) {
-            PoolManager.Recycle(collision.gameObject);
+            PoolManager.Pool(collision.gameObject);
             AsteroidManager.Instance.DestroyAsteroid(this);
         }
     }
