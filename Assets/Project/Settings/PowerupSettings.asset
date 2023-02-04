@@ -15,6 +15,6 @@ MonoBehaviour:
   spawnInterval: 10
   movementSpeed: 3
   powerupWeaponPrefabs:
-  - {fileID: 8859626427565502523, guid: e5769c063610d824f8f03ac14d92268a, type: 3}
+  - {fileID: 1150883024287064366, guid: e4f810508b829fc4e9f43c32bf17828e, type: 3}
   powerupBarrierPrefabs:
-  - {fileID: 4525688566917660257, guid: 6d94f63ed80010d408716cf14a7a6280, type: 3}
+  - {fileID: 7841083942838285149, guid: 275bd4147c41831459e6f7c7b4811f01, type: 3}

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BarrierManagerSettings
   m_EditorClassIdentifier: 
   barrierPrefabs:
-  - {fileID: 7133347729306438491, guid: 4ff10f651dc3f564c8f25a2031670abf, type: 3}
+  - {fileID: 397154882546295930, guid: 862499a3f2eb502439d0b61d21ee96e4, type: 3}
