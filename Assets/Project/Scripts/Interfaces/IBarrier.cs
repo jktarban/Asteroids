@@ -1,2 +1,4 @@
-public interface IBarrier {
+namespace Barrier {
+    public interface IBarrier {
+    }
 }

@@ -1,16 +1,19 @@
 using TMPro;
 using UnityEngine;
+using Utils;
 
-public class ScoreManager : MonoSingleton<ScoreManager> {
-    [SerializeField]
-    private TMP_Text scoreText;
+namespace Score {
+    public class ScoreManager : MonoSingleton<ScoreManager> {
+        [SerializeField]
+        private TMP_Text scoreText;
 
-    private int _scoreValue;
+        private int _scoreValue;
 
-    public int ScoreValue => _scoreValue;
+        public int ScoreValue => _scoreValue;
 
-    public void AddScore() {
-        _scoreValue++;
-        scoreText.text = _scoreValue.ToString();
+        public void AddScore() {
+            _scoreValue++;
+            scoreText.text = _scoreValue.ToString();
+        }
     }
 }

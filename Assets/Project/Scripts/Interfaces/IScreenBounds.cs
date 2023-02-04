@@ -1,1 +1,3 @@
-public interface IScreenBounds { }
+namespace ScreenBounds {
+    public interface IScreenBounds { }
+}

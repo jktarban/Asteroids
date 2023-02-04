@@ -1,1 +1,3 @@
-public interface IPowerup { }
+namespace Powerup {
+    public interface IPowerup { }
+}

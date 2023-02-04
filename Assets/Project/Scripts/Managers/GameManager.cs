@@ -1,10 +1,14 @@
+using Asteroid;
 using Pool;
+using Powerup;
+using Score;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Utils;
 
 public class GameManager : MonoSingleton<GameManager> {
     [SerializeField]

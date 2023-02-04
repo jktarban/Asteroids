@@ -1,4 +1,6 @@
-public interface IWeapon {
-    void EndTimer();
-    void Fire();
+namespace Weapon {
+    public interface IWeapon {
+        void EndTimer();
+        void Fire();
+    }
 }
