@@ -38,20 +38,26 @@ namespace Health {
                 yield break;
             }
 
-            if (_barrierController is object) {
-                if (_barrierController != null) {
-                    if (_barrierController.AbsorbAmount != 0) {
-                        _barrierController.UseBarrier();
-                    }
-                }
-            }
-            else {
+            if (!IsUsingBarrier()) {
                 DeductHealth();
             }
 
             _isRecovering = true;
             yield return new WaitForSeconds(playerSettings.HitRecoveryTime);
             _isRecovering = false;
+        }
+
+        private bool IsUsingBarrier() {
+            if (_barrierController is object) {
+                if (_barrierController != null) {
+                    if (_barrierController.AbsorbAmount != 0) {
+                        _barrierController.UseBarrier();
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         private void DeductHealth() {
