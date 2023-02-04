@@ -3,7 +3,7 @@
 This is for an exam given to me
 
 
-I have ran out of time to implement editor script that automatically creates scripts and prefabs. Also ran out of time to improve Asset Sprites
+I have ran out of time to implement editor script that automatically creates scripts, scriptable objects and prefabs. Also ran out of time to improve Asset Sprites
 
 Configurations are located at Projects>Settings>
 
