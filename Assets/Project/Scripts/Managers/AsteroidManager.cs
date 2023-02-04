@@ -35,7 +35,7 @@ public class AsteroidManager : MonoSingleton<AsteroidManager> {
     }
 
     private IEnumerator SpawnNewAsteroid() {
-        if (GameManager.Instance.IsGameOver) {
+        if (GameManager.Instance.State != GameState.Start) {
             yield break;
         }
 

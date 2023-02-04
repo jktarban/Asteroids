@@ -12,13 +12,13 @@ public class GameManager : MonoSingleton<GameManager> {
     [SerializeField]
     private Button restartButton;
 
-    private bool _isGameOver;
+    private GameState _state;
 
-    public bool IsGameOver => _isGameOver;
+    public GameState State => _state;
 
     public void GameOver() {
         gameOverContainer.SetActive(true);
-        _isGameOver = true;
+        _state = GameState.GameOver;
         scoreText.text = ScoreManager.Instance.ScoreValue.ToString();
     }
 
@@ -30,4 +30,10 @@ public class GameManager : MonoSingleton<GameManager> {
         PoolManager.Clear();
         SceneManager.LoadScene("MainScene");
     }
+}
+
+public enum GameState {
+    Intro,
+    Start,
+    GameOver
 }

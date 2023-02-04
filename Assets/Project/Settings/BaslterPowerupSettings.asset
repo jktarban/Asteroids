@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e539f85738748c47a85d7c4d557a9dd, type: 3}
-  m_Name: PowerupSettings
+  m_Script: {fileID: 11500000, guid: 90a77aa6128369f41a6a6fe055177089, type: 3}
+  m_Name: BaslterPowerupSettings
   m_EditorClassIdentifier: 
-  spawnInterval: 5
+  spawnInterval: 0

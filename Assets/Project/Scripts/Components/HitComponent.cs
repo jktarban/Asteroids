@@ -21,7 +21,7 @@ public class HitComponent : MonoBehaviour
     }
 
     private IEnumerator HitRoutine() {
-        if (GameManager.Instance.IsGameOver) {
+        if (GameManager.Instance.State != GameState.Start) {
             yield break;
         }
 

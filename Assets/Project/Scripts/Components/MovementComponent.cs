@@ -22,7 +22,11 @@ namespace Movement {
         }
 
         private void FixedUpdate() {
-            if (GameManager.Instance.IsGameOver) {
+            if (GameManager.Instance.State != GameState.Start) {
+                return;
+            }
+
+            if (GameManager.Instance.State == GameState.GameOver) {
                 gameObject.SetActive(false);
                 return;
             }
