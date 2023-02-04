@@ -1,9 +1,6 @@
-// Creates a simple wizard that lets you create a Light GameObject
-// or if the user clicks in "Apply", it will set the color of the currently
-// object selected to red
-
 using Barrier;
 using Bullet;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 using Weapon;
@@ -39,6 +36,25 @@ public class CreatePowerup : ScriptableWizard {
 
             var weaponSOPath = "Assets/Project/Settings/Weapon/Weapon" + powerupName + "Settings.asset";
             CreateScriptableObjecte<WeaponSO>(weaponSOPath);
+
+            var weaponScriptPath = "Assets/Project/Scripts/Implementations/Weapon" + powerupName + ".cs";
+            if (File.Exists(weaponScriptPath) == false) {
+                using StreamWriter outfile =
+                new StreamWriter(weaponScriptPath); outfile.WriteLine("using Powerup;");
+                outfile.WriteLine("using System;");
+                outfile.WriteLine("using UnityEngine;");
+                outfile.WriteLine("");
+                outfile.WriteLine("");
+                outfile.WriteLine("namespace Weapon {");
+                outfile.WriteLine("public class Weapon" + powerupName + " : BaseWeapon, IPowerup {");
+                outfile.WriteLine("public Weapon" + powerupName + "(Transform weaponHead, WeaponSO weaponSO, Action onWeaponTimeOver) : base(weaponHead, weaponSO, onWeaponTimeOver) { }");
+                outfile.WriteLine("}");
+                outfile.WriteLine("}");
+                outfile.WriteLine("");
+            }
+
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
         }
         else if (powerupType == PowerupType.Barrier) {
             var barrierPrefabPath = "Assets/Project/Prefabs/Base/BaseBarrierPrefab.prefab";
@@ -47,6 +63,20 @@ public class CreatePowerup : ScriptableWizard {
 
             var barrierSOPath = "Assets/Project/Settings/Barrier/Barrier" + powerupName + "Settings.asset";
             CreateScriptableObjecte<BarrierSO>(barrierSOPath);
+
+            var barrierScriptPath = "Assets/Project/Scripts/Implementations/Barrier" + powerupName + ".cs";
+            if (File.Exists(barrierScriptPath) == false) {
+                using StreamWriter outfile =
+                new StreamWriter(barrierScriptPath); outfile.WriteLine("using Powerup;");
+                outfile.WriteLine("");
+                outfile.WriteLine("namespace Barrier {");
+                outfile.WriteLine("public class Barrier" + powerupName + " : BaseBarrier, IPowerup {}");
+                outfile.WriteLine("}");
+                outfile.WriteLine("");
+            }
+
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
         }
     }
 
@@ -60,8 +90,5 @@ public class CreatePowerup : ScriptableWizard {
     private void CreateScriptableObjecte<T>(string path) where T : ScriptableObject {
         var SO = CreateInstance<T>();
         AssetDatabase.CreateAsset(SO, path);
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
     }
 }
-

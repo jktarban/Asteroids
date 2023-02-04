@@ -1,7 +1,5 @@
 using Powerup;
 
 namespace Barrier {
-    public class BarrierBasic : BaseBarrier, IPowerup {
-
-    }
+    public class BarrierBasic : BaseBarrier, IPowerup {}
 }
