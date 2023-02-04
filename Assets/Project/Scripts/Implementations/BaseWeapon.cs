@@ -1,4 +1,6 @@
+using Helpers;
 using System;
+using System.Collections;
 using System.Timers;
 using UnityEngine;
 
@@ -7,7 +9,7 @@ namespace Weapon {
         protected WeaponSO _weaponSO;
         protected Transform _weaponHead;
         private Action _onWeaponTimeOver;
-        private Timer _weaponTimer;
+        private Coroutine _timerRoutine;
 
         public BaseWeapon(Transform weaponHead, WeaponSO weaponSO, Action onWeaponTimeOver) {
             _weaponSO = weaponSO;
@@ -18,15 +20,12 @@ namespace Weapon {
                 return;
             }
 
-            _weaponTimer = new Timer();
-            _weaponTimer.Elapsed += new ElapsedEventHandler(OnWeaponTimeOver);
-            _weaponTimer.Interval = weaponSO.Timer * 1000;
-            _weaponTimer.Enabled = true;
+            _timerRoutine = CoroutineHelper.Instance.StartCoroutine(TimerRoutine(_weaponSO.Timer));
         }
 
         public void EndTimer() {
-            if (_weaponTimer != null) {
-                _weaponTimer.Stop();
+            if(_timerRoutine != null) {
+                CoroutineHelper.Instance.StopCoroutine(_timerRoutine);
             }
         }
 
@@ -34,7 +33,8 @@ namespace Weapon {
             _weaponSO.CreateBullets(_weaponHead);
         }
 
-        private void OnWeaponTimeOver(object sender, ElapsedEventArgs e) {
+        private IEnumerator TimerRoutine(float time) {
+            yield return new WaitForSeconds(time);
             _onWeaponTimeOver?.Invoke();
         }
     }

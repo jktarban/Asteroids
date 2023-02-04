@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,11 +6,15 @@ namespace Weapon {
         [SerializeField]
         private Transform weaponHead;
         [SerializeField]
-        private WeaponSOItem[] weaponSOItems;
+        private WeaponManagerSettingsSO weaponManagerSettings;
         private IWeapon weapon;
 
         internal void OnFire(InputAction.CallbackContext obj) {
             if (GameManager.Instance.State != GameState.Start) {
+                return;
+            }
+
+            if (weapon == null) {
                 return;
             }
 
@@ -23,14 +26,8 @@ namespace Weapon {
                 weapon.EndTimer();
             }
 
-            var weaponSettings = weaponSOItems.First((WeaponSOItem x) => x.WeaponType.Type.Name == weaponName).WeaponSettings;
-
-            if (weaponName == typeof(WeaponDefault).Name) {
-                weapon = new WeaponDefault(weaponHead, weaponSettings, OnWeaponTimeOver);
-            }
-            if (weaponName == typeof(WeaponBlaster).Name) {
-                weapon = new WeaponBlaster(weaponHead, weaponSettings, OnWeaponTimeOver);
-            }
+            var weaponSettings = weaponManagerSettings.GetWeaponSettings(weaponName);
+            weapon = new BaseWeapon(weaponHead, weaponSettings, OnWeaponTimeOver);
         }
 
         private void OnEnable() {

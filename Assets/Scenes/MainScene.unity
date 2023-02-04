@@ -1085,19 +1085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponHead: {fileID: 1764387045}
-  weaponSOItems:
-  - weaponType:
-      GuidAssignmentFailed: 0
-      GUID: 89514a47723782b49be6d6427957b9c2
-      _typeNameAndAssembly: Weapon.WeaponDefault, Assembly-CSharp
-      _suppressLogs: 0
-    weaponSettings: {fileID: 11400000, guid: 9e5b5c200a0c30948a1283d14f6bf9cf, type: 2}
-  - weaponType:
-      GuidAssignmentFailed: 0
-      GUID: 446d7aeb618dcac4eb5c3cef07bfec41
-      _typeNameAndAssembly: Weapon.WeaponBlaster, Assembly-CSharp
-      _suppressLogs: 0
-    weaponSettings: {fileID: 11400000, guid: c8ec5c39b115849418a2eac4b74ae674, type: 2}
+  weaponManagerSettings: {fileID: 11400000, guid: 8491ce30bb6e1f04db2ce6e1cd8183de, type: 2}
 --- !u!4 &1085357568
 Transform:
   m_ObjectHideFlags: 0

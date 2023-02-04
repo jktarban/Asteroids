@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3ce366ed28f02e4791562a4bd7c6523, type: 3}
-  m_Name: WeaponBlasterSettings
+  m_Script: {fileID: 11500000, guid: faa3b040b92b9f84eaccfbc058d0b520, type: 3}
+  m_Name: WeaponManagerSettings
   m_EditorClassIdentifier: 
-  timer: 1
-  fireInterval: 0.5
-  bulletAmount: 1
-  bulletDistance: 0.03
-  bulletPrefab: {fileID: 5309775490459105984, guid: 79e61a4cd47061141ac5e92cac656709, type: 3}
+  weaponSettings:
+  - {fileID: 11400000, guid: c8ec5c39b115849418a2eac4b74ae674, type: 2}
+  - {fileID: 11400000, guid: 9e5b5c200a0c30948a1283d14f6bf9cf, type: 2}
