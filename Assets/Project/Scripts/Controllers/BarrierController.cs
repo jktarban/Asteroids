@@ -7,6 +7,15 @@ namespace Barrier {
         private BarrierSO barrierSettings;
         private int _absorbAmount;
 
+        public BarrierSO BarrierSettings {
+            get {
+                return barrierSettings;
+            }
+            set {
+                barrierSettings = value;
+            }
+        }
+
         public int AbsorbAmount => _absorbAmount;
 
         private void OnEnable() {

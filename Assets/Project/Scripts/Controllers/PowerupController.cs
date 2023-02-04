@@ -10,9 +10,18 @@ namespace Powerup {
 
         private Rigidbody2D _rigidbody2D;
 
+        public TypeReference PowerupType {
+            get {
+                return powerupType;
+            }
+            set {
+                powerupType = value;
+            }
+        }
+
         internal string PowerupName => powerupType.Type.Name;
 
-        public void SetSpeed(float speed, Vector2 direction) {
+        internal void SetSpeed(float speed, Vector2 direction) {
             _rigidbody2D.velocity = new Vector2(direction.x, direction.y) * speed;
         }
 

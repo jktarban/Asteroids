@@ -10,7 +10,17 @@ namespace Bullet {
 
         private Rigidbody2D _rigidbody2D;
 
-        public void Setup(Vector2 direction) {
+        public BulletSO BulletSettings {
+            get {
+                return bulletSettings;
+            }
+            set {
+                bulletSettings = value;
+            }
+
+        }
+
+        internal void Setup(Vector2 direction) {
             _rigidbody2D.velocity = direction * bulletSettings.Speed;
             StartCoroutine(DespawnRoutine());
         }

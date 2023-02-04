@@ -1,7 +1,12 @@
 using Barrier;
 using Bullet;
+using Powerup;
+using System;
 using System.IO;
+using System.Reflection;
+using TypeReferences;
 using UnityEditor;
+using UnityEditor.Callbacks;
 using UnityEngine;
 using Weapon;
 
@@ -11,15 +16,37 @@ public class CreatePowerup : ScriptableWizard {
     [SerializeField]
     private PowerupType powerupType;
 
+    private const string POWERUP_ASSEMBLY_KEY = "WEAPON_KEY";
+    private const string POWERUP_PATH_KEY = "POWERUP_PATH_KEY";
     private enum PowerupType {
         Weapon,
         Barrier
+    }
+
+    [DidReloadScripts]
+    public static void OnCompileScripts() {
+        var weaponKey = EditorPrefs.GetString(POWERUP_ASSEMBLY_KEY, "");
+
+        if (string.IsNullOrEmpty(weaponKey)) {
+            return;
+        }
+
+        //set reference of powerup to new weapon type
+        var assemblyName = "Assembly-CSharp";
+        var assemblyQualifiedName = Assembly.CreateQualifiedName(assemblyName, weaponKey);
+        var weaponType = Type.GetType(assemblyQualifiedName);
+        var powerupPath = EditorPrefs.GetString(POWERUP_PATH_KEY, "");
+        var powerup = AssetDatabase.LoadAssetAtPath<GameObject>(powerupPath).GetComponent<PowerupController>();
+        powerup.PowerupType = new TypeReference(weaponType);
+
+        EditorPrefs.SetString(POWERUP_ASSEMBLY_KEY, "");
     }
 
     [MenuItem("GameObject/CreatePowerup")]
     private static void CreateWizard() {
         DisplayWizard<CreatePowerup>("Create Powerup", "Create");
     }
+
 
     private void OnWizardCreate() {
         var powerupPrefabPath = "Assets/Project/Prefabs/Base/BasePowerupPrefab.prefab";
@@ -29,13 +56,13 @@ public class CreatePowerup : ScriptableWizard {
         if (powerupType == PowerupType.Weapon) {
             var bulletPrefabPath = "Assets/Project/Prefabs/Base/BaseBulletPrefab.prefab";
             var bulletVariantPath = "Assets/Project/Prefabs/Bullet/Bullet" + powerupName + "Prefab" + ".prefab";
-            CreatePrefab(bulletPrefabPath, bulletVariantPath);
+            var bullet = CreatePrefab(bulletPrefabPath, bulletVariantPath);
 
             var bulletSOPath = "Assets/Project/Settings/Bullet/Bullet" + powerupName + "Settings.asset";
-            CreateScriptableObjecte<BulletSO>(bulletSOPath);
+            var bulletSO = CreateScriptableObjecte<BulletSO>(bulletSOPath);
 
             var weaponSOPath = "Assets/Project/Settings/Weapon/Weapon" + powerupName + "Settings.asset";
-            CreateScriptableObjecte<WeaponSO>(weaponSOPath);
+            var weaponSO = CreateScriptableObjecte<WeaponSO>(weaponSOPath);
 
             var weaponScriptPath = "Assets/Project/Scripts/Implementations/Weapon" + powerupName + ".cs";
             if (File.Exists(weaponScriptPath) == false) {
@@ -53,16 +80,17 @@ public class CreatePowerup : ScriptableWizard {
                 outfile.WriteLine("");
             }
 
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
+            bullet.GetComponent<BulletController>().BulletSettings = bulletSO;
+            weaponSO.BulletPrefab = bullet.GetComponent<BulletController>();
+            EditorPrefs.SetString(POWERUP_ASSEMBLY_KEY, "Weapon.Weapon" + powerupName);
         }
         else if (powerupType == PowerupType.Barrier) {
             var barrierPrefabPath = "Assets/Project/Prefabs/Base/BaseBarrierPrefab.prefab";
             var barrierVariantPath = "Assets/Project/Prefabs/Barrier/Barrier" + powerupName + "Prefab" + ".prefab";
-            CreatePrefab(barrierPrefabPath, barrierVariantPath);
+            var barrier = CreatePrefab(barrierPrefabPath, barrierVariantPath);
 
             var barrierSOPath = "Assets/Project/Settings/Barrier/Barrier" + powerupName + "Settings.asset";
-            CreateScriptableObjecte<BarrierSO>(barrierSOPath);
+            var barrierSO = CreateScriptableObjecte<BarrierSO>(barrierSOPath);
 
             var barrierScriptPath = "Assets/Project/Scripts/Implementations/Barrier" + powerupName + ".cs";
             if (File.Exists(barrierScriptPath) == false) {
@@ -75,20 +103,29 @@ public class CreatePowerup : ScriptableWizard {
                 outfile.WriteLine("");
             }
 
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
+            barrier.GetComponent<BarrierController>().BarrierSettings = barrierSO;
+            EditorPrefs.SetString(POWERUP_ASSEMBLY_KEY, "Barrier.Barrier" + powerupName);
         }
+
+        EditorPrefs.SetString(POWERUP_PATH_KEY, powerupvariantPath);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        EditorUtility.FocusProjectWindow();
     }
 
-    private void CreatePrefab(string prefabPath, string variantPath) {
-        var powerupPrefab = (GameObject)AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject));
-        var powerupSource = PrefabUtility.InstantiatePrefab(powerupPrefab) as GameObject;
-        PrefabUtility.SaveAsPrefabAsset(powerupSource, variantPath);
-        DestroyImmediate(powerupSource);
+    private GameObject CreatePrefab(string prefabPath, string variantPath) {
+        var prefab = (GameObject)AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject));
+        var source = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
+        var go = PrefabUtility.SaveAsPrefabAsset(source, variantPath);
+        DestroyImmediate(source);
+
+        return go;
     }
 
-    private void CreateScriptableObjecte<T>(string path) where T : ScriptableObject {
+    private T CreateScriptableObjecte<T>(string path) where T : ScriptableObject {
         var SO = CreateInstance<T>();
         AssetDatabase.CreateAsset(SO, path);
+
+        return SO;
     }
 }

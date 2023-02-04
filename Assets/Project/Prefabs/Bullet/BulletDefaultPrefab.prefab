@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 744745143215767370, guid: 08998a83bc1acdc46901d89fe93c4b2c, type: 3}
       propertyPath: m_Name
-      value: BaseBulletPrefab
+      value: BulletDefaultPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 744745143215767380, guid: 08998a83bc1acdc46901d89fe93c4b2c, type: 3}
       propertyPath: m_RootOrder

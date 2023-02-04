@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7133347729306438491}
   - component: {fileID: 3121170140959411224}
   m_Layer: 7
-  m_Name: BarrierBasicPrefab
+  m_Name: BaseBarrierPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

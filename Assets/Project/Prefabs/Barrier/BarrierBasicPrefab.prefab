@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3121170140959411207, guid: f49125f61ec795644a6e6a7fb446644c, type: 3}
       propertyPath: m_Name
-      value: BaseBarrierPrefab
+      value: BarrierBasicPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 3121170140959411225, guid: f49125f61ec795644a6e6a7fb446644c, type: 3}
       propertyPath: m_RootOrder

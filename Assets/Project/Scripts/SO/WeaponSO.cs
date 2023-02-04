@@ -9,19 +9,27 @@ namespace Weapon {
     public class WeaponSO : ScriptableObject {
         [Header("-1 if no timer")]
         [SerializeField]
-        private int timer;
+        private int timer = 10;
         [SerializeField]
-        private float fireInterval;
+        private float fireInterval = 0.5f;
         [SerializeField]
-        private int bulletAmount;
+        private int bulletAmount = 1;
         [SerializeField]
-        private float bulletDistance;
+        private float bulletDistance = 0.03f;
         [SerializeField]
         private BulletController bulletPrefab;
 
         private bool _canFire = true;
 
         public int Timer => timer;
+        public BulletController BulletPrefab {
+            get {
+                return bulletPrefab;
+            }
+            set {
+                bulletPrefab = value;
+            }
+        }
 
         public void CreateBullets(Transform direction) {
             if (_canFire) {
