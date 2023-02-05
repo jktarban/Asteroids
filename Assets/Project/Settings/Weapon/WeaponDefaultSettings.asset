@@ -15,5 +15,5 @@ MonoBehaviour:
   timer: -1
   fireInterval: 0.5
   bulletAmount: 3
-  bulletDistance: 0.03
+  bulletDistance: 0.07
   bulletPrefab: {fileID: 3868250450342752271, guid: 69381fa6222e3f14f8485f71eaebe4ab, type: 3}

@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5827287774943976613, guid: e9e7de169f99b9d4bb66ed55e4930f46, type: 3}
+      propertyPath: m_Radius
+      value: 0.155
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827287774943976613, guid: e9e7de169f99b9d4bb66ed55e4930f46, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5827287774943976616, guid: e9e7de169f99b9d4bb66ed55e4930f46, type: 3}
       propertyPath: m_Name
       value: BlasterPowerupPrefab
@@ -14,6 +22,18 @@ PrefabInstance:
     - target: {fileID: 5827287774943976618, guid: e9e7de169f99b9d4bb66ed55e4930f46, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827287774943976618, guid: e9e7de169f99b9d4bb66ed55e4930f46, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827287774943976618, guid: e9e7de169f99b9d4bb66ed55e4930f46, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827287774943976618, guid: e9e7de169f99b9d4bb66ed55e4930f46, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5827287774943976618, guid: e9e7de169f99b9d4bb66ed55e4930f46, type: 3}
       propertyPath: m_LocalPosition.x
@@ -56,12 +76,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5827287774943976619, guid: e9e7de169f99b9d4bb66ed55e4930f46, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3b6952eb028d19a42b4de4be5309cc84, type: 3}
+    - target: {fileID: 5827287774943976619, guid: e9e7de169f99b9d4bb66ed55e4930f46, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5827287774943976619, guid: e9e7de169f99b9d4bb66ed55e4930f46, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5827287774943976619, guid: e9e7de169f99b9d4bb66ed55e4930f46, type: 3}
       propertyPath: m_Color.r
